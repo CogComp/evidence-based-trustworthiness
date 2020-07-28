@@ -1,1 +1,1 @@
-# Evidence-based Trustworthiness - Detecting Fake News
+# Evidence-based Trustworthiness
