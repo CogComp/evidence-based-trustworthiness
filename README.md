@@ -1,2 +1,2 @@
 # Evidence-based Trustworthiness
-run method.py
+To generate results and evaluation metrics, run method.py
