@@ -47,6 +47,7 @@ def evidence_search(topk, news, vflag):
 
     if vflag == True:
         vectorizer = TfidfVectorizer(ngram_range=(1, 2))
+        vectorizer.fit(sentences)
         joblib.dump(vectorizer, 'tfidf_model.joblib')
 
     vectorizer = joblib.load('tfidf_model.joblib')

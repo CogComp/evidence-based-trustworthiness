@@ -2,7 +2,15 @@ import numpy as np
 from nltk.tokenize import word_tokenize, sent_tokenize
 from scipy.spatial.distance import cosine
 
-
+def jd_sim(l1, l2):
+    l1 = np.array(l1)
+    l2 = np.array(l2)
+    int1 = np.intersect1d(l1, l2)
+    uni1 = np.union1d(l1,l2)
+    if len(uni1) == 0:
+        return 0
+    else:
+        return float(len(int1))/float(len(uni1))
 
 def loadGloveModel(gloveFile):
     print("Loading Glove Model")
