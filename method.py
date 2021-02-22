@@ -141,7 +141,6 @@ class TrustEvidence:
             vec_gt.append(self.source_gt[i])
         return pearsonr(vec_gt, vec_res)
 
-
 class SimpleLCA(TrustEvidence):
 
     def __init__(self, data1, data2, itr, gt, sgt):

@@ -15,7 +15,7 @@ from scipy.stats import pearsonr
 from trust_models import Baseline
 
 evi_noise_ratio = 0.25
-claim_evidence_entail_file = "claim_evidence_score_adapt_top20.txt" #"claim_evidence_score_adapt_top20_with_n_1.txt" #
+claim_evidence_entail_file =  "claim_evidence_score_adapt_top20_with_n_1.txt" #"claim_evidence_score_adapt_top20.txt"
 nlp = spacy.load('en_core_web_sm')
 directory = "dataset/emergent/"
 files = "url-versions-2015-06-14.csv"
