@@ -6,8 +6,6 @@ from data_process_entail import claim_label, source_claim, source_claim_evidence
 from utility import jd_sim
 from scipy.special import expit
 from scipy.spatial.distance import cosine
-import scipy.stats
-#from bayes_opt import BayesianOptimization
 from decimal import *
 getcontext().prec = 6
 import numpy as np
@@ -762,9 +760,6 @@ class EvidenceLCA_Combine(SimpleLCA):
             print(self.spearsman_source())
             print(self.pearson_source())
             print("\n")
-
-
-#exit()
 
 class EvidenceLCA_FullConnect(SimpleLCA):
 
@@ -1872,7 +1867,7 @@ class EvidenceLCA_noisy_recall(SimpleLCA):
         #     else:
         #         self.Accuracy[i] = float(acc) / float(temp)
 
-        for i in range(100):
+        for i in range(50):
             pre_acc = {}
             for m in self.Accuracy.keys():
                 pre_acc[m] = self.Accuracy[m]
@@ -1883,7 +1878,7 @@ class EvidenceLCA_noisy_recall(SimpleLCA):
                 self.Accuracy[m] = self.Accuracy[m] + float(lr) * gradient_A[m]
         #print(self.Accuracy)
 
-        for i in range(100):
+        for i in range(50):
             pre_recall = {}
             for m in self.Recall.keys():
                 pre_recall[m] = self.Recall[m]
@@ -1901,7 +1896,7 @@ class EvidenceLCA_noisy_recall(SimpleLCA):
             #if delta < lr1_b:
             #    break
 
-        for i in range(100):
+        for i in range(50):
             pre_q = {}
             for m in self.Qf.keys():
                 pre_q[m] = self.Qf[m]
@@ -1918,7 +1913,7 @@ class EvidenceLCA_noisy_recall(SimpleLCA):
             #if delta < lr3_b:
             #    break
 
-        for i in range(50):
+        for i in range(30):
             pre_alpha = {}
             for m in self.Extractor.keys():
                 pre_alpha[m] = self.Extractor[m]
@@ -2072,8 +2067,8 @@ class EvidenceLCA_noisy_recall(SimpleLCA):
                     self.Accuracy[i] = 0
                 if self.Accuracy[i] > 1:
                     self.Accuracy[i] = 1
-            self.pearson_source()
-            self.spearsman_source()
+            print(self.pearson_source())
+            print(self.spearsman_source())
         # acc_temp = {}
         # total_temp = {}
         # for i in self.source_claim.keys():
@@ -2417,7 +2412,7 @@ print(data.label_analysis(claim_label))
 #data2.LCA()
 
 #
-data = EvidenceLCA_noisy_recall(source_claim, source_claim_evidence_noisy, 9, claim_label, source_truthworthiness)
+data = EvidenceLCA_noisy_recall(source_claim, source_claim_evidence_noisy, 19, claim_label, source_truthworthiness)
 #data = EvidenceLCA_FullConnect(source_evidence, 100, claim_label)
 result, rank_data = data.LCA()
 print("evidence LCA: ")
@@ -2436,10 +2431,10 @@ exit()
 #    source_top.append(source_rank[i][0])
 
 
-with codecs.open("new_training_data_headline_with_n_2.txt", "w") as outFp:
-    for i in rank_data:
-        outFp.write(i[0] + "\t" + i[1] + "\t" + str(i[2]) + "\n")
-    outFp.close()
+#with codecs.open("new_training_data_headline_with_n_2.txt", "w") as outFp:
+#    for i in rank_data:
+#        outFp.write(i[0] + "\t" + i[1] + "\t" + str(i[2]) + "\n")
+#    outFp.close()
 
 
 
