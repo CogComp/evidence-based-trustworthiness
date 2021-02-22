@@ -82,8 +82,8 @@ claim_evidence = evidence_search(topk, news, True)
 
 #model = PretrainedModel("https://s3-us-west-2.amazonaws.com/allennlp/models/esim-elmo-2018.05.17.tar.gz",'textual-entailment').predictor()
 #predictor = Predictor.from_path("https://s3-us-west-2.amazonaws.com/allennlp/models/esim-elmo-2018.05.17.tar.gz",'textual-entailment')
-#predictor = Predictor.from_path("https://s3-us-west-2.amazonaws.com/allennlp/models/decomposable-attention-elmo-2018.02.19.tar.gz")
-predictor = Predictor.from_path("newmodel_adapt20_with_n_1/model.tar.gz")
+predictor = Predictor.from_path("https://s3-us-west-2.amazonaws.com/allennlp/models/decomposable-attention-elmo-2018.02.19.tar.gz")
+#predictor = Predictor.from_path("newmodel_adapt20_with_n_1/model.tar.gz")
 
 with codecs.open("claim_evidence_score_adapt_top20_with_n_1.txt","w") as outFp:
     for claim in claim_evidence.keys():
