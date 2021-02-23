@@ -33,7 +33,7 @@ def jaccard_similarity(list1, list2):
 
 def sent2emb(sent):
     sent = sent.lower()
-    tokens = word_tokenize(sent.decode('utf8'))
+    tokens = word_tokenize(sent)#sent.decode('utf8'))
     vectors = []
     for tok in tokens:
         if tok in glove:

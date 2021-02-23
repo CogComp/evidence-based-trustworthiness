@@ -1931,7 +1931,8 @@ class EvidenceLCA_noisy_recall(SimpleLCA):
 
             #if delta < lr2_b:
             #    break
-            print("iteration extractor", i)
+            #print("iteration extractor", i)
+        print("Interation:\n")
         print(self.Recall)
         print(self.Qf)
         print(self.Extractor)
@@ -1991,7 +1992,7 @@ class EvidenceLCA_noisy_recall(SimpleLCA):
             temp_rank = sorted(self.item_val_dis[i].items(), key=lambda d: d[1], reverse=True)
             self.item_val[i] = temp_rank[0][0]
 
-        print(self.precision(self.item_val))
+        #print(self.precision(self.item_val))
 
         for i in self.source_claim.keys():
             for j in self.source_claim[i].keys():
@@ -2025,8 +2026,8 @@ class EvidenceLCA_noisy_recall(SimpleLCA):
             temp_rank = sorted(self.item_val_dis[i].items(), key=lambda d: d[1], reverse=True)
             self.item_val[i] = temp_rank[0][0]
 
-        print(self.precision(self.item_val))
-        print("\n")
+        #print(self.precision(self.item_val))
+        #print("\n")
 
     def LCA(self):
         self.__initialization__()
@@ -2066,8 +2067,8 @@ class EvidenceLCA_noisy_recall(SimpleLCA):
                     self.Accuracy[i] = 0
                 if self.Accuracy[i] > 1:
                     self.Accuracy[i] = 1
-            print(self.pearson_source())
-            print(self.spearsman_source())
+            #print(self.pearson_source())
+            #print(self.spearsman_source())
         # acc_temp = {}
         # total_temp = {}
         # for i in self.source_claim.keys():
@@ -2136,6 +2137,7 @@ class EvidenceLCA_noisy_recall(SimpleLCA):
         #      rank_data_1000 = rank_data
 
         return self.item_val, rank_data
+
 class EvidenceLCA(SimpleLCA):
 
     def __init__(self, data, itr, gt):
@@ -2368,8 +2370,8 @@ class EvidenceLCA(SimpleLCA):
         #    self.Accuracy[i] = expit(self.Accuracy[i])
         # for i in self.Extractor.keys():
         #    self.Extractor[i] = expit(self.Extractor[i])
-        print(self.Accuracy)
-        print(self.Extractor)
+        #print(self.Accuracy)
+        #print(self.Extractor)
 
     def LCA(self):
         self.__initialization__()
@@ -2390,7 +2392,7 @@ class EvidenceLCA(SimpleLCA):
                 for j in self.Extractor[i].keys():
                     self.Extractor[i][j] = 0
             self.MstepLayer(lr1, lr2, lr1_b, lr2_b)  # (0.0001, 0.1)
-            print(data.precision(self.item_val))
+            #print(data.precision(self.item_val))
         return self.item_val
 
 #data = SimpleLCA_nosiy(source_claim_evidence_noisy, 100, claim_label) #data, iteration_number, ground_truth
@@ -2401,11 +2403,11 @@ print('precision: ', data.precision(result))
 print('spearsman: ', data.spearsman_source())
 print('pearson: ', data.pearson_source())
 
-print(data.one_label_accuracy())
+#print(data.one_label_accuracy())
 #print(data.precision(result))
-print(data.label_analysis(result))
-print(data.error_analysis(result))
-print(data.label_analysis(claim_label))
+#print(data.label_analysis(result))
+#print(data.error_analysis(result))
+#print(data.label_analysis(claim_label))
 
 #data2 = EvidenceLCA_Combine(source_claim, source_claim_evidence_noisy, 10, claim_label, source_truthworthiness)
 #data2.LCA()
@@ -2420,9 +2422,9 @@ print("spearsman: ", data.spearsman_source())
 print("pearson: ", data.pearson_source())
 
 
-print(data.error_analysis(result))
-print(data.Accuracy)
-exit()
+#print(data.error_analysis(result))
+#print(data.Accuracy)
+#exit()
 
 #source_rank = sorted(data.Accuracy.items(), key = lambda d:d[1], reverse=True)
 #source_top = []

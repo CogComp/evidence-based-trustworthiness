@@ -15,7 +15,7 @@ from scipy.stats import pearsonr
 from trust_models import Baseline
 
 evi_noise_ratio = 0.25
-claim_evidence_entail_file =  "claim_evidence_score_adapt_top20_with_n_1.txt" #"claim_evidence_score_adapt_top20.txt"
+claim_evidence_entail_file =  "claim_evidence_score_adapt_top20_with_n_1 2.txt" #"claim_evidence_score_adapt_top20.txt"
 nlp = spacy.load('en_core_web_sm')
 directory = "dataset/emergent/"
 files = "url-versions-2015-06-14.csv"
@@ -279,35 +279,35 @@ for i in sr1.keys():
     sr1[i] = float(sr1[i])/float(temp_total)
 print('pearsonr score :', pearson_source(source_truthworthiness, sr1))
 
-print("\n majority vote evidence:")
-cr2, sr2, sr3 = test1.majority_vote_claim_evidence()
-print("precision: ", precision_source(claim_label, cr2))
-print("spearsman score: ", spearsman_source(source_truthworthiness, sr2))
-print("spearsman score extra: ", spearsman_source(source_truthworthiness, sr3))
-temp_total = sum(sr2.values())
-for i in sr2.keys():
-    sr2[i] = float(sr2[i])/float(temp_total)
-print("pearson score: ", pearson_source(source_truthworthiness, sr2))
+#print("\n majority vote evidence:")
+#r2, sr2, sr3 = test1.majority_vote_claim_evidence()
+#print("precision: ", precision_source(claim_label, cr2))
+#print("spearsman score: ", spearsman_source(source_truthworthiness, sr2))
+#print("spearsman score extra: ", spearsman_source(source_truthworthiness, sr3))
+#temp_total = sum(sr2.values())
+#for i in sr2.keys():
+#    sr2[i] = float(sr2[i])/float(temp_total)
+#print("pearson score: ", pearson_source(source_truthworthiness, sr2))
 
-temp_total = sum(sr3.values())
-for i in sr3.keys():
-    sr3[i] = float(sr3[i])/float(temp_total)
-print('pearsonr score extra: ', pearson_source(source_truthworthiness, sr3))
+#temp_total = sum(sr3.values())
+#for i in sr3.keys():
+#    sr3[i] = float(sr3[i])/float(temp_total)
+#print('pearsonr score extra: ', pearson_source(source_truthworthiness, sr3))
 
-#exit()
 
-acc = 0
-for i in claim_label.keys():
-    if i in cr1 and i not in cr2:
-        if claim_label[i] == cr1[i]:
-            acc + 1
-    elif i in cr2 and i not in cr1:
-        if claim_label[i] == cr2[i]:
-            acc + 1
-    elif i in cr1 and i in cr2:
-        if claim_label[i] == cr1[i] or claim_label[i] == cr2[i]:
-            acc = acc + 1
-print('union precision: ', float(acc)/float(len(claim_label.keys())))
+
+#acc = 0
+#for i in claim_label.keys():
+#    if i in cr1 and i not in cr2:
+#        if claim_label[i] == cr1[i]:
+#            acc + 1
+#    elif i in cr2 and i not in cr1:
+#        if claim_label[i] == cr2[i]:
+#            acc + 1
+#    elif i in cr1 and i in cr2:
+#        if claim_label[i] == cr1[i] or claim_label[i] == cr2[i]:
+#            acc = acc + 1
+#print('union precision: ', float(acc)/float(len(claim_label.keys())))
 
 
 #
